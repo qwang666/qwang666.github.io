@@ -11,7 +11,7 @@ background: 'background.jpg'
 favicon: 'favicon.ico'
 
 # Online profiles
-file: 'https://github.com/qwang666'
+file: 'github.com/qwang666'
 #dribbble: 'mydribbble'
 #facebook: 'myfacebook'
 #twitter: 'mytwitter'
@@ -61,6 +61,7 @@ social-links-order: [file, github-user, facebook, twitter, instagram, tumblr, pi
 social-links:
   - name: file 
     url-pattern: '__USERNAME__'
+    url-scheme: 'https://'
     icon-class: far fa-2x fa-file
     
   - name: facebook
