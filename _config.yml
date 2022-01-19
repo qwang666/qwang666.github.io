@@ -65,7 +65,6 @@ social-links-order: [file, github-user, facebook, twitter, instagram, tumblr, pi
 social-links:
   - name: file 
     url-pattern: qwang666.github.io/__USERNAME__
-    url-scheme: 'https://'
     icon-class: far fa-2x fa-file
     
   - name: facebook
