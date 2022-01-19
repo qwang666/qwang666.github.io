@@ -35,7 +35,7 @@ github-user: 'qwang666'
 #blog_url: 'myblog.blog.com'
 email: 'wangqi.57@163.com'
 #messenger: 'myfbchat'
-scholar: 'https://orcid.org/0000-0001-7774-978X'
+scholar: 'orcid.org/0000-0001-7774-978X'
 
 social-links-order: [file, github-user, facebook, twitter, instagram, tumblr, pinterest, linkedin, youtube, vk, weibo, dribbble, messenger, blog_url,scholar, email]
 
@@ -163,4 +163,5 @@ social-links:
     
   - name: scholar 
     url-pattern: '__USERNAME__'
+    url-scheme: 'https://'
     icon-class: fas fa-2x fa-graduation-cap
