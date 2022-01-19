@@ -3,7 +3,8 @@ remote_theme: epidrome/cover-card@main
 
 # Title and tag line
 title: 'WANG QI'
-description: 'I am Micheal WANG!'
+description: 'Ph.D. Student
+Hong Kong University of Science and Technology (HKUST)'
 
 # Images
 avatar: 'avatar.jpg'
@@ -18,7 +19,7 @@ twitter: 'mytwitter'
 instagram: 'myinsta'
 #pinterest: 'mypinterest'
 youtube: 'myyoutube'
-github-user: 'mygithub'
+github-user: 'qwang666'
 #gitlab-user: ''
 #codepen: ''
 #steam: ''
