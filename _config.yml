@@ -3,7 +3,7 @@ remote_theme: epidrome/cover-card@main
 
 # Title and tag line
 title: 'WANG QI'
-description: 'Ph.D. Student\nHong Kong University of Science and Technology (HKUST)'
+description: 'Ph.D. Student<br>Hong Kong University of Science and Technology (HKUST)'
 
 # Images
 avatar: 'avatar.jpg'
