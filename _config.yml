@@ -11,6 +11,7 @@ background: 'background.jpg'
 favicon: 'favicon.ico'
 
 # Online profiles
+file: 'https://github.com/qwang666'
 #dribbble: 'mydribbble'
 #facebook: 'myfacebook'
 #twitter: 'mytwitter'
@@ -34,8 +35,9 @@ github-user: 'qwang666'
 #blog_url: 'myblog.blog.com'
 email: 'wangqi.57@163.com'
 #messenger: 'myfbchat'
+scholar: 'https://orcid.org/0000-0001-7774-978X'
 
-social-links-order: [github-user, facebook, twitter, instagram, tumblr, pinterest, linkedin, youtube, vk, weibo, dribbble, messenger, blog_url, email]
+social-links-order: [file, github-user, facebook, twitter, instagram, tumblr, pinterest, linkedin, youtube, vk, weibo, dribbble, messenger, blog_url,scholar, email]
 
 # Yaml manifest of supported social links
 # Requirements:
@@ -57,6 +59,11 @@ social-links-order: [github-user, facebook, twitter, instagram, tumblr, pinteres
 #     - defaults to `fab` style and uses value of `name` attribute (e.g. fab fa-2x fa-twitter)
 #     - **optional**
 social-links:
+  - name: file 
+    url-pattern: '__USERNAME__'
+    url-scheme: 'https://'
+    icon-class: far fa-file
+    
   - name: facebook
     url-pattern: facebook.com/__USERNAME__
     icon-class: fab fa-2x fa-facebook-f
@@ -154,3 +161,8 @@ social-links:
     url-scheme: 'mailto:'
     url-pattern: '__USERNAME__'
     icon-class: far fa-2x fa-envelope-open
+    
+  - name: scholar 
+    url-pattern: '__USERNAME__'
+    url-scheme: 'https://'
+    icon-class: fas fa-2x fa-graduation-cap
