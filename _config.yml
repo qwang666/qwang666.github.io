@@ -11,7 +11,7 @@ background: 'background.jpg'
 favicon: 'favicon.ico'
 
 # Online profiles
-file: 'qwang666.github.io/cv'
+profile: 'qwang666.github.io/cv'
 #dribbble: 'mydribbble'
 #facebook: 'myfacebook'
 #twitter: 'mytwitter'
@@ -59,7 +59,7 @@ social-links-order: [file, github-user, facebook, twitter, instagram, tumblr, pi
 #     - defaults to `fab` style and uses value of `name` attribute (e.g. fab fa-2x fa-twitter)
 #     - **optional**
 social-links:
-  - name: file 
+  - name: profile 
     url-pattern: __USERNAME__
     icon-class: far fa-2x fa-file
     
