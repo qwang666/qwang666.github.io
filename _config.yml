@@ -19,7 +19,7 @@ profile: 'qwang666.github.io/cv'
 #instagram: 'myinsta'
 #pinterest: 'mypinterest'
 #youtube: 'myyoutube'
-github-user: 'qwang666'
+github: 'qwang666'
 #gitlab-user: ''
 #codepen: ''
 #steam: ''
@@ -37,7 +37,7 @@ email: 'wangqi.57@163.com'
 #messenger: 'myfbchat'
 scholar: 'orcid.org/0000-0001-7774-978X'
 
-social-links-order: [file, github-user, facebook, twitter, instagram, tumblr, pinterest, linkedin, youtube, vk, weibo, dribbble, messenger, blog_url,scholar, email]
+social-links-order: [profile, github, facebook, twitter, instagram, tumblr, pinterest, linkedin, youtube, vk, weibo, dribbble, messenger, blog_url,scholar, email]
 
 # Yaml manifest of supported social links
 # Requirements:
@@ -91,7 +91,7 @@ social-links:
   - name: pinterest
     url-pattern: pinterest.com/__USERNAME__
 
-  - name: github-user
+  - name: github
     url-pattern: github.com/__USERNAME__
     icon-class: fab fa-2x fa-github
 
