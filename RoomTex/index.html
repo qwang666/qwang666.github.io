@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RoomTex: Texturing Compositional Indoor Scenes via Iterative Inpainting</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RoomTex: Texturing Compositional Indoor Scenes via Iterative Inpainting</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://qwang666.github.io/">Qi Wang</a><sup>1,3,*</sup>,</span>
+            <span class="author-block">
+              <a href="">Ruijie Lu</a><sup>2,3,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://sheldontsui.github.io/">Xudong Xu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://seng.hkust.edu.hk/about/people/faculty/michael-yu-wang">Michael Y Wang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://daibo.info/">Bo Dai</a><sup>3,✉</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cis.pku.edu.cn/info/1177/1378.htm">Gang Zeng</a><sup>2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.danxurgb.net/">Dan Xu</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>HKUST</span>
+            <span class="author-block"><sup>2</sup>Peking University</span>
+            <span class="author-block"><sup>3</sup>Shanghai AI Laboratory</span>
+            <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution  <sup>✉</sup>Corresponding Author</small></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.png"
+                 class="teaser image"
+                 alt="Interpolate start reference image."/>
+      <h2 class="subtitle has-text-centered">
+        High-quality and style-consistent textures of multiple styles can be synthesized given meshes.<br>
+        Fine-grained texture control and flexible scene editing are well supported.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3">Interactive Fine-grained Texture Control</h3>
+      <div style="display: flex; justify-content: center;">
+        <div style="width: 100%; text-align: center;">
+          <video poster="" id="liv" controls muted loop playsinline width="100%" controls>
+            <source src="./static/videos/interact_small.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The advancement of diffusion models has pushed the boundary of text-to-3D object generation. 
+            While it is straightforward to composite objects into a scene with reasonable geometry,
+            it is nontrivial to texture such a scene perfectly due to style inconsistency and occlusions between objects. 
+            To tackle these problems, we propose a <i> coarse-to-fine </i> 3D scene texturing framework, referred to as <strong> RoomTex </strong>,
+            to generate high-fidelity and style-consistent textures for untextured compositional scene meshes.
+            In the coarse stage, RoomTex first unwraps the scene mesh to a panoramic depth map and leverages ControlNet to generate a room panorama,
+            which is regarded as the coarse reference to ensure the global texture consistency.
+            In the fine stage,
+            based on the panoramic image and perspective depth maps, RoomTex will refine and texture every single object in the room iteratively along a series of selected camera views,
+            until this object is completely painted.
+            Moreover, we propose to maintain superior alignment between RGB and depth spaces via subtle edge detection methods.
+            Extensive experiments show our method is capable of generating high-quality and diverse room textures,
+            and more importantly,
+            supporting interactive fine-grained texture control and flexible scene editing
+            thanks to our inpainting-based framework and compositional mesh input.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+
+      <div class="column">
+        <h2 class="title is-3">Method Overview</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              We utilize off-the-shelf 3D shape generative models along with a given room layout to assemble the room mesh.
+              In the coarse stage, the 3D room mesh is unwrapped to a panorama depth map, 
+              based on which we generate a panoramic image of the room as a coarse reference.
+              Then in the fine stage, the empty room will be further refined in perspective views.
+              Afterward, we employ an iterative inpainting pipeline to refine and paint every independent 3D object 
+              in the room.
+            </p>
+
+            <img src="./static/images/method.png"
+                 class="method"
+                 alt="Interpolate start reference image."/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+    <h2 class="title is-3">Results</h2>
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="title is-3">Living Room</h3>
+          <div style="display: flex; justify-content: space-between;">
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingroom/liv_route.mp4" type="video/mp4">
+              </video>
+              <p>Emauromin Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingroom/liv_pok_route.mp4" type="video/mp4">
+              </video>
+              <p>Pokémon Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingroom/liv_impress_route.mp4" type="video/mp4">
+              </video>
+              <p>Impression Style</p>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between;">
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingroom/liv_anime_route.mp4" type="video/mp4">
+              </video>
+              <p>Anime Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingroom/liv_real_route.mp4" type="video/mp4">
+              </video>
+              <p>Real Estate Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingroom/liv_space_route.mp4" type="video/mp4">
+              </video>
+              <p>Space Style</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="title is-3">Bedroom</h3>
+          <div style="display: flex; justify-content: space-between;">
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/bedroom/bed_route.mp4" type="video/mp4">
+              </video>
+              <p>Emauromin Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/bedroom/bed_real_route.mp4" type="video/mp4">
+              </video>
+              <p>Real Estate Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/bedroom/bed_kawaii_route.mp4" type="video/mp4">
+              </video>
+              <p>Kawaii Style</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="title is-3">Living-dining Room</h3>
+          <div style="display: flex; justify-content: space-between;">
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingdining/livdin_route1.mp4" type="video/mp4">
+              </video>
+              <p>Emauromin Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingdining/livdin_space1.mp4" type="video/mp4">
+              </video>
+              <p>Space Style</p>
+            </div>
+            <div style="width: 33%; text-align: center;">
+              <video poster="" id="liv" autoplay controls muted loop playsinline width="100%" controls>
+                <source src="./static/videos/livingdining/livdin_mine1.mp4" type="video/mp4">
+              </video>
+              <p>Minecraft Style</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title is-3">3D-FRONT</h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item item-bedroom">
+              <video poster="" id="bedroom" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/3Dfront/3Dfront_img_bedroom.mp4"
+                        type="video/mp4">
+              </video>
+              <div class="video-description">Minecraft Style Bedroom</div>
+            </div>
+    
+            <div class="item item-liv02">
+              <video poster="" id="liv02" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/3Dfront/3Dfront_img_liv02.mp4"
+                        type="video/mp4">
+              </video>
+              <div class="video-description">Kawaii Style Living Room</div>
+            </div>
+            <div class="item item-liv03">
+              <video poster="" id="liv03" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/3Dfront/3Dfront_img_liv03.mp4"
+                        type="video/mp4">
+              </video>
+              <div class="video-description">Emauromin Style Living Room</div>
+            </div>
+            <div class="item item-liv01">
+              <video poster="" id="liv01" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/3Dfront/3Dfront_img_liv01.mp4"
+                        type="video/mp4">
+              </video>
+              <div class="video-description">Pokémon Style Living Room</div>
+            </div>
+            <div class="item item-livdin">
+              <video poster="" id="livdin" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/3Dfront/3Dfront_img_livdin.mp4"
+                        type="video/mp4">
+              </video>
+              <div class="video-description">Real Estate Style Living-dining Room</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{,
+      author    = {Qi Wang*, Ruijie Lu*, Xudong Xu, Jingbo Wang, Michael Y Wang, Bo Dai, Gang Zeng, Dan Xu},
+      title     = {RoomTex: Texturing Compositional Indoor Scenes via Iterative Inpainting},
+      journal   = {arXiv preprint arXiv:},
+      year      = {2024},
+    }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is constructed using the source code provided by <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, and we are grateful for their template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
