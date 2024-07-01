@@ -146,52 +146,57 @@
       <h3 class="title is-3">Interactive Fine-grained Texture Control</h3>
       <div style="display: flex; justify-content: center;">
         <div style="width: 100%; text-align: center;">
-          <div id="texture_control"></div>
+          <div id="texture_control" style="width: 100%; height: 500px; text-align: center;">
+            <script src="https://www.youtube.com/iframe_api"></script>
+            <script>
+              var player;
+              function onYouTubeIframeAPIReady() {
+               createPlayer();
+              }
+              window.onload = function() {
+                onYouTubeIframeAPIReady();
+              };
+              function createPlayer() {
+                player = new YT.Player('texture_control', {
 
-          <script src="https://www.youtube.com/iframe_api"></script>
-          <script>
-            var player;
-            function onYouTubeIframeAPIReady() {
-              player = new YT.Player('texture_control', {
-                height: '500',
-                width: "100%" ,
-                videoId: '1uYl4ldC5xU', // 1uYl4ldC5xU, Notexist
-                playerVars: {
-                  loop: 1,
-                  playlist: '1uYl4ldC5xU'
-                },
-                events: {
-                  'onError': onPlayerError
-                }
-              });
-            }
-          
-            function onPlayerError(event) {
-              loadBackupVideo();
-            }
-            
-            function loadBackupVideo() {
-              var container = document.getElementById('texture_control');
-              
-              // 删除整个'texture_control'容器元素
-              container.parentNode.removeChild(container);
-              
-              // 重新创建新的'texture_control'容器元素和<video>元素
-              var newContainer = document.createElement('div');
-              newContainer.id = 'texture_control';
-              newContainer.innerHTML = '<video poster="" autoplay controls muted loop playsinline width="100%" preload="metadata" type="video/mp4"></video>';
-              
-              // 将新的'texture_control'容器元素添加到DOM中
-              var parent = document.querySelector('.hero-body .container.is-max-desktop div[style="width: 100%; text-align: center;"]');
-              parent.appendChild(newContainer);
-              
-              // 获取新创建的<video>元素
-              var videoElement = newContainer.querySelector('video');
-              videoElement.src = "./static/videos/interact_small.mp4";
-              videoElement.play();
-            }
-          </script>
+                  width: "100%" ,
+                  videoId: '1uYl4ldC5xU', // 1uYl4ldC5xU, Notexist
+                  playerVars: {
+                    loop: 1,
+                    playlist: '1uYl4ldC5xU'
+                  },
+                  events: {
+                    'onError': onPlayerError
+                  }
+                });
+              }
 
+              function onPlayerError(event) {
+                loadBackupVideo();
+              }
+
+              function loadBackupVideo() {
+                var container = document.getElementById('texture_control');
+              
+               // 删除整个'texture_control'容器元素
+               container.parentNode.removeChild(container);
+              
+               // 重新创建新的'texture_control'容器元素和<video>元素
+                var newContainer = document.createElement('div');
+               newContainer.id = 'texture_control';
+                newContainer.innerHTML = '<video poster="" autoplay controls muted loop playsinline width="100%" preload="metadata" type="video/mp4"></video>';
+                
+                // 将新的'texture_control'容器元素添加到DOM中
+               var parent = document.querySelector('.hero-body .container.is-max-desktop div[style="width: 100%; text-align: center;"]');
+                parent.appendChild(newContainer);
+              
+               // 获取新创建的<video>元素
+               var videoElement = newContainer.querySelector('video');
+               videoElement.src = "./static/videos/interact_small.mp4";
+               videoElement.play();
+              }
+            </script>
+          </div>
         </div>
       </div>
     </div>
